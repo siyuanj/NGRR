@@ -1,0 +1,368 @@
+\begin{thebibliography}{51}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Adolfsson et~al.(2021)Adolfsson, Magnusson, Liao, Lilienthal, and
+  Andreasson]{adolfsson2021coral}
+Daniel Adolfsson, Martin Magnusson, Qianfang Liao, Achim~J. Lilienthal, and
+  Henrik Andreasson.
+\newblock {CorAl} -- are the point clouds correctly aligned?
+\newblock In \emph{European Conference on Mobile Robots}, pages 1--7, 2021.
+
+\bibitem[Aiger et~al.(2008)Aiger, Mitra, and Cohen-Or]{aiger2008fpcs}
+Dror Aiger, Niloy~J. Mitra, and Daniel Cohen-Or.
+\newblock 4-points congruent sets for robust pairwise surface registration.
+\newblock \emph{ACM Transactions on Graphics}, 27\penalty0 (3):\penalty0
+  85:1--85:10, 2008.
+
+\bibitem[Albarelli et~al.(2010)Albarelli, Rodol{\`a}, and
+  Torsello]{albarelli2010game}
+Andrea Albarelli, Emanuele Rodol{\`a}, and Andrea Torsello.
+\newblock A game-theoretic approach to fine surface registration without
+  initial motion estimation.
+\newblock In \emph{IEEE Conference on Computer Vision and Pattern Recognition},
+  pages 430--437, 2010.
+
+\bibitem[Aldoma et~al.(2012)Aldoma, Tombari, Di~Stefano, and
+  Vincze]{aldoma2012ghv}
+Aitor Aldoma, Federico Tombari, Luigi Di~Stefano, and Markus Vincze.
+\newblock A global hypotheses verification method for {3D} object recognition.
+\newblock In \emph{European Conference on Computer Vision}, pages 511--524.
+  Springer, 2012.
+
+\bibitem[Bai et~al.(2021)Bai, Luo, Zhou, Chen, Li, Hu, Fu, and
+  Tai]{bai2021pointdsc}
+Xuyang Bai, Zixin Luo, Lei Zhou, Hongkai Chen, Lei Li, Zeyu Hu, Hongbo Fu, and
+  Chiew-Lan Tai.
+\newblock {PointDSC}: Robust point cloud registration using deep spatial
+  consistency.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 15859--15869, 2021.
+
+\bibitem[Besl and McKay(1992)]{besl1992icp}
+Paul~J. Besl and Neil~D. McKay.
+\newblock A method for registration of 3-{D} shapes.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 14\penalty0 (2):\penalty0 239--256, 1992.
+
+\bibitem[Buch et~al.(2013)Buch, Kraft, K{\"a}m{\"a}r{\"a}inen, Petersen, and
+  Kr{\"u}ger]{buch2013prerejective}
+Anders~Glent Buch, Dirk Kraft, Joni-Kristian K{\"a}m{\"a}r{\"a}inen,
+  Henrik~Gordon Petersen, and Norbert Kr{\"u}ger.
+\newblock Pose estimation using local structure-specific shape and appearance
+  context.
+\newblock In \emph{IEEE International Conference on Robotics and Automation},
+  pages 2080--2087, 2013.
+
+\bibitem[Carbonell and Goldstein(1998)]{carbonell1998mmr}
+Jaime Carbonell and Jade Goldstein.
+\newblock The use of {MMR}, diversity-based reranking for reordering documents
+  and producing summaries.
+\newblock In \emph{Proceedings of the 21st Annual International ACM SIGIR
+  Conference on Research and Development in Information Retrieval}, pages
+  335--336, 1998.
+
+\bibitem[Chen and Medioni(1992)]{chen1992medioni}
+Yang Chen and G{\'e}rard Medioni.
+\newblock Object modelling by registration of multiple range images.
+\newblock \emph{Image and Vision Computing}, 10\penalty0 (3):\penalty0
+  145--155, 1992.
+
+\bibitem[Chen et~al.(2022)Chen, Sun, Yang, and Tao]{chen2022sc2}
+Zhi Chen, Kun Sun, Fan Yang, and Wenbing Tao.
+\newblock {SC$^2$-PCR}: A second order spatial compatibility for efficient and
+  robust point cloud registration.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 13221--13231, 2022.
+
+\bibitem[Chen et~al.(2023)Chen, Sun, Yang, Guo, and Tao]{chen2023sc2pp}
+Zhi Chen, Kun Sun, Fan Yang, Lin Guo, and Wenbing Tao.
+\newblock {SC$^2$-PCR++}: Rethinking the generation and selection for efficient
+  and robust point cloud registration.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 45\penalty0 (10):\penalty0 12358--12376, 2023.
+
+\bibitem[Choy et~al.(2019)Choy, Park, and Koltun]{choy2019fcgf}
+Christopher Choy, Jaesik Park, and Vladlen Koltun.
+\newblock Fully convolutional geometric features.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pages 8958--8966, 2019.
+
+\bibitem[Fischler and Bolles(1981)]{fischler1981ransac}
+Martin~A. Fischler and Robert~C. Bolles.
+\newblock Random sample consensus: A paradigm for model fitting with
+  applications to image analysis and automated cartography.
+\newblock \emph{Communications of the ACM}, 24\penalty0 (6):\penalty0 381--395,
+  1981.
+
+\bibitem[Geiger et~al.(2012)Geiger, Lenz, and Urtasun]{geiger2012kitti}
+Andreas Geiger, Philip Lenz, and Raquel Urtasun.
+\newblock Are we ready for autonomous driving? the {KITTI} vision benchmark
+  suite.
+\newblock In \emph{IEEE Conference on Computer Vision and Pattern Recognition},
+  pages 3354--3361, 2012.
+
+\bibitem[Gelfand et~al.(2003)Gelfand, Ikemoto, Rusinkiewicz, and
+  Levoy]{gelfand2003stable}
+Natasha Gelfand, Leslie Ikemoto, Szymon Rusinkiewicz, and Marc Levoy.
+\newblock Geometrically stable sampling for the {ICP} algorithm.
+\newblock In \emph{Fourth International Conference on 3-D Digital Imaging and
+  Modeling (3DIM)}, pages 260--267, 2003.
+
+\bibitem[Huang et~al.(2021)Huang, Gojcic, Usvyatsov, Wieser, and
+  Schindler]{huang2021predator}
+Shengyu Huang, Zan Gojcic, Mikhail Usvyatsov, Andreas Wieser, and Konrad
+  Schindler.
+\newblock Predator: Registration of {3D} point clouds with low overlap.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 4267--4276, 2021.
+
+\bibitem[Huang et~al.(2024)Huang, Peng, Vidal, and Liu]{huang2024tear}
+Tianyu Huang, Liangzu Peng, Ren{\'e} Vidal, and Yun-Hui Liu.
+\newblock Scalable {3D} registration via truncated entry-wise absolute
+  residuals.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 27477--27487, 2024.
+\newblock arXiv:2404.00915.
+
+\bibitem[Jiang et~al.(2023)Jiang, Dang, Wei, Xie, Yang, and
+  Salzmann]{jiang2023vbreg}
+Haobo Jiang, Zheng Dang, Zhen Wei, Jin Xie, Jian Yang, and Mathieu Salzmann.
+\newblock Robust outlier rejection for {3D} registration with variational
+  {Bayes}.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 1148--1157, 2023.
+
+\bibitem[Kabsch(1976)]{kabsch1976}
+W. Kabsch.
+\newblock A solution for the best rotation to relate two sets of vectors.
+\newblock \emph{Acta Crystallographica Section A}, 32\penalty0 (5):\penalty0
+  922--923, 1976.
+
+\bibitem[Kirkpatrick et~al.(1983)Kirkpatrick, Gelatt, and
+  Vecchi]{kirkpatrick1983annealing}
+S. Kirkpatrick, C.~D. Gelatt, and M.~P. Vecchi.
+\newblock Optimization by simulated annealing.
+\newblock \emph{Science}, 220\penalty0 (4598):\penalty0 671--680, 1983.
+
+\bibitem[Langmuir(1918)]{langmuir1918}
+Irving Langmuir.
+\newblock The adsorption of gases on plane surfaces of glass, mica and
+  platinum.
+\newblock \emph{Journal of the American Chemical Society}, 40\penalty0
+  (9):\penalty0 1361--1403, 1918.
+
+\bibitem[Leordeanu and Hebert(2005)]{leordeanu2005spectral}
+Marius Leordeanu and Martial Hebert.
+\newblock A spectral technique for correspondence problems using pairwise
+  constraints.
+\newblock In \emph{IEEE International Conference on Computer Vision}, pages
+  1482--1489, 2005.
+
+\bibitem[Li et~al.(2026)Li, Yao, Lu, and Zhang]{li2026dualreg}
+Jiayi Li, Yuxin Yao, Qiuhang Lu, and Juyong Zhang.
+\newblock {DualReg}: Dual-space filtering and reinforcement for rigid
+  registration.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 39031--39041, 2026.
+\newblock arXiv:2508.17034.
+
+\bibitem[McCabe et~al.(2005)McCabe, Smith, and Harriott]{mccabe2005}
+Warren~L. McCabe, Julian~C. Smith, and Peter Harriott.
+\newblock \emph{Unit Operations of Chemical Engineering}.
+\newblock McGraw-Hill, 7 edition, 2005.
+
+\bibitem[McNemar(1947)]{mcnemar1947}
+Quinn McNemar.
+\newblock Note on the sampling error of the difference between correlated
+  proportions or percentages.
+\newblock \emph{Psychometrika}, 12\penalty0 (2):\penalty0 153--157, 1947.
+
+\bibitem[Mellado et~al.(2014)Mellado, Aiger, and Mitra]{mellado2014super4pcs}
+Nicolas Mellado, Dror Aiger, and Niloy~J. Mitra.
+\newblock {Super 4PCS}: Fast global pointcloud registration via smart indexing.
+\newblock \emph{Computer Graphics Forum}, 33\penalty0 (5):\penalty0 205--215,
+  2014.
+
+\bibitem[Mullin(2001)]{mullin2001}
+J.~W. Mullin.
+\newblock \emph{Crystallization}.
+\newblock Butterworth-Heinemann, 4 edition, 2001.
+
+\bibitem[Pavan and Pelillo(2007)]{pavan2007dominant}
+Massimiliano Pavan and Marcello Pelillo.
+\newblock Dominant sets and pairwise clustering.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 29\penalty0 (1):\penalty0 167--172, 2007.
+
+\bibitem[Pomerleau et~al.(2012)Pomerleau, Liu, Colas, and
+  Siegwart]{pomerleau2012eth}
+Fran{\c{c}}ois Pomerleau, Ming Liu, Francis Colas, and Roland Siegwart.
+\newblock Challenging data sets for point cloud registration algorithms.
+\newblock \emph{The International Journal of Robotics Research}, 31\penalty0
+  (14):\penalty0 1705--1711, 2012.
+
+\bibitem[Qin et~al.(2022)Qin, Yu, Wang, Guo, Peng, and
+  Xu]{qin2022geotransformer}
+Zheng Qin, Hao Yu, Changjian Wang, Yulan Guo, Yuxing Peng, and Kai Xu.
+\newblock Geometric transformer for fast and robust point cloud registration.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 11143--11152, 2022.
+
+\bibitem[Quan and Yang(2020)]{quan2020cgsac}
+Siwen Quan and Jiaqi Yang.
+\newblock Compatibility-guided sampling consensus for {3-D} point cloud
+  registration.
+\newblock \emph{IEEE Transactions on Geoscience and Remote Sensing},
+  58\penalty0 (10):\penalty0 7380--7392, 2020.
+
+\bibitem[Razlaw et~al.(2015)Razlaw, Droeschel, Holz, and Behnke]{razlaw2015mpv}
+Jan Razlaw, David Droeschel, Dirk Holz, and Sven Behnke.
+\newblock Evaluation of registration methods for sparse {3D} laser scans.
+\newblock In \emph{European Conference on Mobile Robots}, pages 1--7, 2015.
+
+\bibitem[Rusu and Cousins(2011)]{rusu2011pcl}
+Radu~Bogdan Rusu and Steve Cousins.
+\newblock {3D} is here: {Point Cloud Library (PCL)}.
+\newblock In \emph{IEEE International Conference on Robotics and Automation},
+  pages 1--4, 2011.
+
+\bibitem[Rusu et~al.(2009)Rusu, Blodow, and Beetz]{rusu2009fpfh}
+Radu~Bogdan Rusu, Nico Blodow, and Michael Beetz.
+\newblock Fast point feature histograms ({FPFH}) for {3D} registration.
+\newblock In \emph{IEEE International Conference on Robotics and Automation},
+  pages 3212--3217, 2009.
+
+\bibitem[{Stanford Computer Graphics Laboratory}(n.d.)]{stanford}
+{Stanford Computer Graphics Laboratory}.
+\newblock The stanford {3D} scanning repository, n.d.
+\newblock Bunny model; accessed October 26, 2026.
+
+\bibitem[Sun and Deng(2022)]{sun2022trivoc}
+Lei Sun and Lu Deng.
+\newblock {TriVoC}: Efficient voting-based consensus maximization for robust
+  point cloud registration with extreme outlier ratios.
+\newblock \emph{IEEE Robotics and Automation Letters}, 7\penalty0 (2):\penalty0
+  4654--4661, 2022.
+\newblock arXiv:2111.00657.
+
+\bibitem[Torr and Zisserman(2000)]{torr2000mlesac}
+P.~H.~S. Torr and A. Zisserman.
+\newblock {MLESAC}: A new robust estimator with application to estimating image
+  geometry.
+\newblock \emph{Computer Vision and Image Understanding}, 78\penalty0
+  (1):\penalty0 138--156, 2000.
+
+\bibitem[Yan et~al.(2025)Yan, Shi, Zhao, Wang, Cao, Wu, and
+  Li]{yan2025turboreg}
+Shaocheng Yan, Pengcheng Shi, Zhenjun Zhao, Kaixin Wang, Kuang Cao, Ji Wu, and
+  Jiayuan Li.
+\newblock {TurboReg}: {TurboClique} for robust and efficient point cloud
+  registration.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pages 26371--26381, 2025.
+\newblock arXiv:2507.01439.
+
+\bibitem[Yang et~al.(2021)Yang, Shi, and Carlone]{yang2021teaser}
+Heng Yang, Jingnan Shi, and Luca Carlone.
+\newblock {TEASER}: Fast and certifiable point cloud registration.
+\newblock \emph{IEEE Transactions on Robotics}, 37\penalty0 (2):\penalty0
+  314--333, 2021.
+\newblock Early access 2020; arXiv:2001.07715.
+
+\bibitem[Yang et~al.(2022)Yang, Huang, Quan, Qi, and Zhang]{yang2022saccot}
+Jiaqi Yang, Zhiqiang Huang, Siwen Quan, Zhaoshuai Qi, and Yanning Zhang.
+\newblock {SAC-COT}: Sample consensus by sampling compatibility triangles in
+  graphs for {3-D} point cloud registration.
+\newblock \emph{IEEE Transactions on Geoscience and Remote Sensing},
+  60:\penalty0 1--15, 2022.
+
+\bibitem[Yang et~al.(2024)Yang, Zhang, Wang, Guo, Sun, Wu, Zhang, and
+  Zhang]{yang2024mac}
+Jiaqi Yang, Xiyu Zhang, Peng Wang, Yulan Guo, Kun Sun, Qiao Wu, Shikun Zhang,
+  and Yanning Zhang.
+\newblock {MAC}: Maximal cliques for {3D} registration.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 46\penalty0 (12):\penalty0 10645--10662, 2024.
+
+\bibitem[Yao et~al.(2023)Yao, Du, Cui, Ye, Wen, Zhang, Tian, and
+  Gao]{yao2023hunter}
+Runzhao Yao, Shaoyi Du, Wenting Cui, Aixue Ye, Feng Wen, Hongbo Zhang, Zhiqiang
+  Tian, and Yue Gao.
+\newblock Hunter: Exploring high-order consistency for point cloud registration
+  with severe outliers.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 45\penalty0 (12):\penalty0 14760--14776, 2023.
+
+\bibitem[Yu et~al.(2026)Yu, Li, Chang, and Miyazaki]{yu2026flashreg}
+Ziyang Yu, Xiang Li, Qiong Chang, and Jun Miyazaki.
+\newblock {FlashReg}: {GPU}-accelerated 3-clique point cloud registration for
+  real-time correspondence-to-pose estimation.
+\newblock arXiv preprint arXiv:2608.21804, 2026.
+
+\bibitem[Zeng et~al.(2017)Zeng, Song, Nie{\ss}ner, Fisher, Xiao, and
+  Funkhouser]{zeng2017match}
+Andy Zeng, Shuran Song, Matthias Nie{\ss}ner, Matthew Fisher, Jianxiong Xiao,
+  and Thomas Funkhouser.
+\newblock {3DMatch}: Learning local geometric descriptors from {RGB-D}
+  reconstructions.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 1802--1811, 2017.
+
+\bibitem[Zhang et~al.(2023)Zhang, Yang, Zhang, and Zhang]{zhang2023mac}
+Xiyu Zhang, Jiaqi Yang, Shikun Zhang, and Yanning Zhang.
+\newblock {3D} registration with maximal cliques.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 17745--17754, 2023.
+
+\bibitem[Zhang et~al.(2025{\natexlab{a}})Zhang, Ma, Guo, Hu, Qi, Hui, Yang, and
+  Zhang]{zhang2025hypergct}
+Xiyu Zhang, Jiayi Ma, Jianwei Guo, Wei Hu, Zhaoshuai Qi, Fei Hui, Jiaqi Yang,
+  and Yanning Zhang.
+\newblock {HyperGCT}: A dynamic hyper-{GNN}-learned geometric constraint for
+  {3D} registration.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pages 24750--24759, 2025{\natexlab{a}}.
+
+\bibitem[Zhang et~al.(2026)Zhang, Xia, Wang, Deng, Quan, Xu, and
+  Yang]{zhang2026mac1tok}
+Xiyu Zhang, Zhiyi Xia, Zhengbao Wang, Jiwei Deng, Siwen Quan, Qingshan Xu, and
+  Jiaqi Yang.
+\newblock {MAC1toK}: Relax feature matching with maximal cliques for {3D}
+  registration.
+\newblock \emph{Visual Intelligence}, 4\penalty0 (1):\penalty0 24, 2026.
+
+\bibitem[Zhang et~al.(2024{\natexlab{a}})Zhang, Wang, Huang, Wang, and
+  Feng]{zhang2024svc}
+Yaojie Zhang, Weijun Wang, Tianlun Huang, Zhiyong Wang, and Wei Feng.
+\newblock {SVC}: Sight view constraint for robust point cloud registration.
+\newblock \emph{Image and Vision Computing}, 152:\penalty0 105315,
+  2024{\natexlab{a}}.
+\newblock arXiv:2409.05065.
+
+\bibitem[Zhang et~al.(2024{\natexlab{b}})Zhang, Zhao, Li, and
+  Chen]{zhang2024fastmac}
+Yifei Zhang, Hao Zhao, Hongyang Li, and Siheng Chen.
+\newblock {FastMAC}: Stochastic spectral sampling of correspondence graph.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 17857--17867, 2024{\natexlab{b}}.
+\newblock arXiv:2403.08770.
+
+\bibitem[Zhang et~al.(2025{\natexlab{b}})Zhang, Huang, Wang, and
+  Feng]{zhang2025decisionpcr}
+Yaojie Zhang, Tianlun Huang, Weijun Wang, and Wei Feng.
+\newblock Decision {PCR}: Decision version of the point cloud registration
+  task.
+\newblock arXiv preprint arXiv:2507.14965, 2025{\natexlab{b}}.
+
+\bibitem[Zhao et~al.(2025)Zhao, Ao, Zhang, Xu, and Guo]{zhao2025regor}
+Guiyu Zhao, Sheng Ao, Ye Zhang, Kai Xu, and Yulan Guo.
+\newblock Progressive correspondence regenerator for robust {3D} registration.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pages 1210--1219, 2025.
+\newblock arXiv:2502.02163.
+
+\end{thebibliography}
