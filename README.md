@@ -1,7 +1,7 @@
 # Nucleate, Grow, Refine, Release: A Chemical-Process Framework for Robust Point Cloud Registration
 
-Chengrui Xu, Siyuan Jiang, Xiaonan Wang\*
-Tsinghua University · \*Corresponding author
+Chengrui Xu†, Siyuan Jiang†, Xiaonan Wang\*
+Tsinghua University · †Equal contribution · \*Corresponding author
 
 [Project page](https://siyuanj.github.io/NGRR/) · [Paper (PDF)](docs/static/ngrr.pdf) · arXiv (coming soon)
 
