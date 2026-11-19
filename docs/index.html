@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="title" content="Nucleate, Grow, Refine, Release: A Chemical-Process Framework for Robust Point Cloud Registration">
+  <meta name="description" content="A training-free finishing and release backend that improves six point cloud registration frontends by 10.8 to 13.7 points on 3DLoMatch, and the NGRR-LS frontend organized after chemical separation.">
+  <meta name="keywords" content="point cloud registration, robust estimation, correspondence, 3DMatch, 3DLoMatch, KITTI, training-free">
+  <meta name="author" content="Chengrui Xu, Siyuan Jiang, Xiaonan Wang">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="NGRR">
+  <meta property="og:title" content="Nucleate, Grow, Refine, Release: A Chemical-Process Framework for Robust Point Cloud Registration">
+  <meta property="og:description" content="Recover refinable pose hypotheses, then convert them into one reliable pose. 53.1% recall on 3DLoMatch+FPFH in 0.39 s on CPU.">
+  <meta property="og:url" content="https://siyuanj.github.io/NGRR/">
+  <meta property="og:image" content="https://siyuanj.github.io/NGRR/static/images/fig_dataflow.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nucleate, Grow, Refine, Release">
+  <meta name="twitter:image" content="https://siyuanj.github.io/NGRR/static/images/fig_dataflow.png">
+
+  <meta name="citation_title" content="Nucleate, Grow, Refine, Release: A Chemical-Process Framework for Robust Point Cloud Registration">
+  <meta name="citation_author" content="Xu, Chengrui">
+  <meta name="citation_author" content="Jiang, Siyuan">
+  <meta name="citation_author" content="Wang, Xiaonan">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_pdf_url" content="https://siyuanj.github.io/NGRR/static/ngrr.pdf">
+
+  <title>NGRR: Nucleate, Grow, Refine, Release</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d4862a'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23fff'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/ngrr.css">
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+</head>
+<body>
+
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Nucleate, Grow, Refine, Release: A Chemical-Process Framework for Robust Point Cloud Registration</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Chengrui Xu,</span>
+              <span class="author-block">Siyuan Jiang,</span>
+              <span class="author-block">Xiaonan Wang<sup>*</sup></span>
+            </div>
+            <div class="publication-affiliation">Tsinghua University</div>
+            <div><span class="eql-cntrb"><small><sup>*</sup>Corresponding author</small></span></div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="static/ngrr.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/siyuanj/NGRR" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark" disabled title="The arXiv link will be added once the preprint is announced">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv (coming soon)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <figure class="paper-figure">
+          <img src="static/images/fig_dataflow.png" alt="The chemical process (top) and the registration data flow (bottom): nucleation, site capacity and growth generate a candidate pool; multi-stream finishing and the release assay turn it into one pose." width="1684" height="937">
+        </figure>
+        <h2 class="subtitle has-text-centered">
+          Registration often fails although a correct pose is among the frontend's hypotheses.
+          NGRR recovers refinable hypotheses with a generator organized after chemical separation,
+          and converts them into one pose with a training-free finishing and release backend that works after any frontend.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Point cloud registration can fail even when a frontend has generated useful hypotheses. We introduce a training-free finishing and release backend for candidate pools from multiple frontends. Multi-stream finishing allocates a fixed surface-refinement budget using correspondence support, surface agreement and geometric information. Release combines geometric support with residual concentration. NGRR-LS complements this backend with a chemical-process-inspired generator: motif nucleation, finite site capacity and retained-composition growth preserve useful candidates. On all 1781 3DLoMatch+FPFH pairs, the same backend improves six frontends by 10.8 to 13.7 percentage points. Finishing takes 0.09 to 0.11 seconds with 16 CPU threads. With compiled NGRR-LS, the pipeline reaches 53.1% recall in 0.39 seconds. Controls with the same ICP and release rule isolate candidate allocation, while coverage&ndash;selection diagnostics distinguish recovery from final selection. These results support viewing robust registration as a budget-constrained process of recovering refinable hypotheses and converting them into a reliable final pose.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Method</h2>
+          <div class="content has-text-justified method-text">
+            <p>
+              At low overlap most putative matches are wrong: with FPFH on 3DLoMatch, 888 of the 1781 pairs have fewer than 1% correct matches.
+              The six frontends we evaluate register 35.1 to 40.4% of these pairs natively, yet after up to 32 of their hypotheses are refined on the observed surfaces,
+              a correct pose is present for 54.2 to 59.8% of the pairs. We therefore treat registration as two linked problems:
+              <em>recovery</em> generates and preserves hypotheses that can be refined to the correct pose, and
+              <em>conversion</em> spends a limited refinement budget on them and selects the final pose.
+            </p>
+            <p>
+              <strong>Nucleate.</strong> Candidate phases are seeded from compatible pairs or triples of matches, as seed crystals start crystallization in a dilute solution.
+              <strong>Grow.</strong> A finite site capacity, borrowed from adsorption, gives each match the vacancy
+              <span class="math">&theta;<sub>x</sub> = 1/(1 + n<sub>x</sub>/q)</span> and discounts matches that many seeds already use, so the seeds spread over several clusters.
+              Growth that retains each phase's current composition, as in total reflux, then enriches the phase with compatible matches. Together these operations form the NGRR-LS frontend.
+            </p>
+            <p>
+              <strong>Refine.</strong> Multi-stream finishing allocates at most 32 point-to-plane ICP refinements across distinct candidates, using correspondence support, surface agreement and geometric information.
+              <strong>Release.</strong> A release assay scores every refined pose by geometric support <span class="math">s</span> and residual concentration <span class="math">h</span>,
+              and releases <span class="math">arg&thinsp;max<sub>k</sub> min(s<sub>k</sub>, h<sub>k</sub>)</span>.
+              Finishing and release form a backend that accepts the candidate pool of any frontend.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results table -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <div class="content has-text-justified">
+        <p>
+          Registration recall (%) on the same inputs (the first 5000 matches of each pair) for 3DMatch, 3DLoMatch and KITTI.
+          The same finishing and release backend, with the same settings, improves all six frontends; on 3DLoMatch+FPFH the gains are 10.8 to 13.7 points.
+          NGRR-LS + F+R reaches 53.1% there, against 52.6% for SC<sup>2</sup>-PCR + F+R (a paired difference that is not statistically significant),
+          with a median time of 0.39 s against 0.92 s.
+        </p>
+      </div>
+      <div class="results-table-wrap">
+        <table class="results-table">
+          <thead>
+            <tr><th></th><th colspan="2">3DMatch</th><th colspan="2">3DLoMatch</th><th colspan="2">KITTI</th><th>Time (s)</th></tr>
+            <tr><th>Method</th><th>FPFH</th><th>FCGF</th><th>FPFH</th><th>FCGF</th><th>FPFH</th><th>FCGF</th><th>3DLoMatch</th></tr>
+          </thead>
+          <tbody>
+<tr class="group"><td colspan="8">Native output</td></tr>
+<tr><td>RANSAC-1M</td><td>82.32</td><td>92.48</td><td>35.09</td><td>57.94</td><td><u>99.64</u></td><td><u>97.30</u></td><td>0.44</td></tr>
+<tr><td>SC<sup>2</sup>-PCR</td><td>83.67</td><td>92.91</td><td>38.97</td><td>58.28</td><td>99.46</td><td>95.86</td><td>0.83</td></tr>
+<tr><td>MAC</td><td>82.99</td><td>93.47</td><td>39.98</td><td>59.01</td><td><u>99.64</u></td><td>95.68</td><td>1.55</td></tr>
+<tr><td>TurboReg</td><td>83.73</td><td>93.35</td><td>38.46</td><td>58.67</td><td><b>99.82</b></td><td>95.50</td><td>1.84</td></tr>
+<tr><td>NGR</td><td>83.36</td><td>92.85</td><td>40.26</td><td>58.96</td><td><b>99.82</b></td><td>95.32</td><td>0.29</td></tr>
+<tr><td>NGRR-LS</td><td>83.43</td><td>93.16</td><td>40.43</td><td>59.24</td><td><u>99.64</u></td><td>95.32</td><td>0.30</td></tr>
+<tr class="group"><td colspan="8">Methods that also use the point clouds</td></tr>
+<tr><td>SC<sup>2</sup>-PCR++<sup>&dagger;</sup></td><td><u>87.86</u></td><td><u>93.72</u></td><td><u>43.85</u></td><td><u>60.42</u></td><td><b>99.82</b></td><td><b>98.20</b></td><td>0.71</td></tr>
+<tr><td>Regor</td><td><b>88.91</b></td><td><b>94.15</b></td><td><b>45.26</b></td><td><b>61.31</b></td><td>&ndash;</td><td>&ndash;</td><td>0.11 GPU</td></tr>
+<tr><td>DualReg</td><td>82.07</td><td>92.73</td><td>37.39</td><td>58.28</td><td>94.05</td><td>93.51</td><td>0.09</td></tr>
+<tr class="group"><td colspan="8">Each frontend + our finishing and release (F+R)</td></tr>
+<tr><td>RANSAC-1M + F+R</td><td>90.20</td><td><b>94.89</b></td><td>48.79</td><td><b>67.10</b></td><td><b>99.82</b></td><td><b>99.46</b></td><td>0.54</td></tr>
+<tr><td>SC<sup>2</sup>-PCR + F+R</td><td><b>91.00</b></td><td><b>94.89</b></td><td><u>52.55</u></td><td><u>66.98</u></td><td><b>99.82</b></td><td><u>99.28</u></td><td>0.92</td></tr>
+<tr><td>MAC + F+R</td><td>90.45</td><td><u>94.76</u></td><td>51.60</td><td>66.37</td><td><b>99.82</b></td><td>98.92</td><td>1.68</td></tr>
+<tr><td>TurboReg + F+R</td><td>90.39</td><td><u>94.76</u></td><td>51.54</td><td>66.09</td><td><b>99.82</b></td><td><b>99.46</b></td><td>1.96</td></tr>
+<tr><td>NGR + F+R</td><td>90.33</td><td>94.45</td><td>51.09</td><td>65.69</td><td><b>99.82</b></td><td><u>99.28</u></td><td>0.38</td></tr>
+<tr class="ours"><td>NGRR-LS + F+R</td><td><u>90.51</u></td><td><b>94.89</b></td><td><b>53.12</b></td><td>66.70</td><td><b>99.82</b></td><td><b>99.46</b></td><td>0.39</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="figure-caption">
+        Bold and underline: best and second-best recall among the native rows and among the F+R rows.
+        Time: median registration stage on 100 3DLoMatch+FPFH pairs with 16 CPU threads (MAC 12), except Regor (GPU); loading and features are excluded.
+        <sup>&dagger;</sup>GPU accuracy with separate CPU timing. &ndash;: setting not available. Full pose errors and protocols are in the paper.
+      </p>
+    </div>
+  </section>
+
+  <!-- Accuracy and time -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Accuracy and time</h2>
+      <div class="columns is-vcentered">
+        <div class="column is-7">
+          <figure class="paper-figure framed">
+            <img src="static/images/fig_pareto.png" alt="Recall against median registration time per pair for native frontends and the same frontends with finishing and release." width="1297" height="773" loading="lazy">
+          </figure>
+        </div>
+        <div class="column is-5">
+          <div class="content has-text-justified">
+            <p>
+              Recall on all 1781 3DLoMatch+FPFH pairs against the median registration-stage time (16 CPU threads).
+              Hollow markers are native outputs; filled markers are the same frontends with the common finishing and release.
+            </p>
+            <p>
+              NGRR-LS with the backend has the highest recall, and every faster baseline reaches at most 45.3%.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Low-inlier pairs -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Pairs with fewer than 1% inliers</h2>
+      <figure class="paper-figure framed">
+        <img src="static/images/fig_dilute.png" alt="Registrations on the 888 3DLoMatch+FPFH pairs below 1% inliers after each stage, and two recovered cases." width="1651" height="578" loading="lazy">
+      </figure>
+      <p class="figure-caption">
+        (a) All 888 3DLoMatch+FPFH pairs below 1% inliers: native output, finishing, release and the refined-pool ceiling.
+        Native outputs register 26 to 37 of these pairs, finishing registers 82 to 124 and release 106 to 152; NGRR-LS rises from 37 to 147.
+        (b) Two recovery cases selected from the 97 pairs where the full pipeline succeeds and all four native baselines fail.
+      </p>
+    </div>
+  </section>
+
+  <!-- Qualitative -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Real cases</h2>
+      <figure class="paper-figure">
+        <img src="static/images/fig_qualitative.jpg" alt="Qualitative registrations on 3DLoMatch+FPFH for RANSAC-1M, SC2-PCR, MAC, TurboReg, ours and the ground truth." width="1396" height="1186" loading="lazy">
+      </figure>
+      <p class="figure-caption">
+        3DLoMatch+FPFH. Gold: source transformed by each method's pose; blue: observed target. Columns 1&ndash;4 are each frontend's native output;
+        &ldquo;Ours&rdquo; is NGRR-LS with finishing and release. Top: pairs that every method registers. Bottom: pairs with an inlier ratio below 1%
+        on which all four baselines fail and ours succeeds. Rows were selected with a rule fixed before rendering.
+      </p>
+    </div>
+  </section>
+
+  <!-- Code -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">Code</h2>
+      <p>
+        The repository contains the training-free CPU reference implementation of the NGRR-LS generator, surface finishing and release.
+        It needs Python 3.11, NumPy, SciPy and PyTorch, and Open3D for ICP.
+      </p>
+<pre><code>git clone https://github.com/siyuanj/NGRR.git
+cd NGRR
+pip install ".[surface]"</code></pre>
+      <p>Register matched points <code>p</code>, <code>q</code> using the observed surfaces; all coordinates and the inlier radius share one unit:</p>
+<pre><code>from ngr import register_with_surfaces
+
+pose = register_with_surfaces(p, q, source_points, target_points,
+                              inlier_radius=0.1, budget=32)
+aligned = source_points @ pose["R"].T + pose["t"]</code></pre>
+      <p>Or apply finishing and release to the candidate poses of another frontend:</p>
+<pre><code>from ngr import refine_candidates
+
+pose = refine_candidates(p, q, source_points, target_points,
+                         candidate_rotations, candidate_translations,
+                         native_pose={"R": native_R, "t": native_t},
+                         inlier_radius=0.1, budget=32)</code></pre>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@misc{xu2026ngrr,
+  title  = {Nucleate, Grow, Refine, Release: A Chemical-Process Framework for Robust Point Cloud Registration},
+  author = {Xu, Chengrui and Jiang, Siyuan and Wang, Xiaonan},
+  year   = {2026},
+  note   = {arXiv preprint}
+}</code></pre>
+    </div>
+  </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

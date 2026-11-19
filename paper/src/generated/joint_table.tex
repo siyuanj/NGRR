@@ -1,0 +1,15 @@
+\small\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+ & \multicolumn{3}{c}{Stage gains (pp)} & \multicolumn{2}{c}{Pool (\%)} \\
+\cmidrule(lr){2-4}\cmidrule(l){5-6}
+Frontend & $\Delta$ICP & $\Delta$Finish & $\Delta$Release & $C$ & $E$ \\
+\midrule
+RANSAC-1M & +4.77 & +5.84 & +3.09 & 54.2 & 90.1 \\
+SC$^2$-PCR & +3.26 & +7.47 & +2.86 & 59.8 & 87.9 \\
+MAC (C++) & +3.20 & +6.18 & +2.25 & 59.7 & 86.4 \\
+TurboReg & +3.31 & +7.24 & +2.53 & 56.4 & 91.3 \\
+NGR & +2.58 & +5.84 & +2.41 & 56.4 & 90.6 \\
+NGRR-LS & +2.58 & +6.63 & +3.48 & 59.2 & 89.8 \\
+\bottomrule
+\end{tabular}

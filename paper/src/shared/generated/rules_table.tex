@@ -1,0 +1,17 @@
+\begin{tabular}{lrrrrr}
+\toprule
+Release rule & Training $\uparrow$ & Test $\uparrow$ & Cells & Pairs & Holm $p$ \\
+\midrule
+$\min(s,h)$ & 9209 & 58922 &  &  &  \\
+support $s$ only & 8925 & 58020 & $+172/-1074$ & $+81/-399$ & $1\times10^{-50}$ \\
+shape $h$ only & 8900 & 57812 & $+1021/-2131$ & $+362/-779$ & $6\times10^{-35}$ \\
+$\lambda s+(1-\lambda)h$, $\lambda=0.3$ from training & \textbf{9290} & \textbf{59288} & $+624/-258$ & $+258/-112$ & $9\times10^{-14}$ \\
+product $sh$ & 9208 & 58960 & $+140/-102$ & $+84/-62$ & 0.16 \\
+harmonic mean & 9211 & 58964 & $+135/-93$ & $+81/-55$ & 0.10 \\
+rank sum (Borda) & 9164 & 58806 & $+371/-487$ & $+190/-224$ & 0.16 \\
+\midrule
+uniform choice in the non-dominated set (expected) & & 58075 & & & \\
+non-dominated set contains a correct pose & & 60311 & & & \\
+pool contains a correct pose (ceiling) & 9754 & 61144 & & & \\
+\bottomrule
+\end{tabular}

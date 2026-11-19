@@ -1,0 +1,29 @@
+\section{Chemical operations and the registration pipeline}
+\label{S-sec:s-flowsheet}
+
+Chemical separation uses different operations to recover a product and assess its quality~\cite{mccabe2005,mullin2001}. Seed crystals initiate a product phase in a dilute solution. Finite adsorption capacity limits how much a species can occupy a site. A column under total reflux returns enriched condensate and retains its composition between stages. Finishing improves the recovered products before a release assay checks their specifications. In registration, the corresponding tasks are to generate a correct hypothesis and to select it from the candidates.
+
+The registration pipeline follows these operations (\main{\cref*{fig:flowsheet}}). Its generation section was designed from the first three units: geometric motifs seed the candidate phases, a finite site capacity keeps any single cluster of wrong matches from taking every seed, and total-reflux growth enriches each phase from its own composition. Multi-stream finishing refines candidates on the observed surfaces. A release test then selects a pose by its limiting specification. These verification stages can follow any frontend. We test each operation by removing or replacing it (\cref{S-tab:s-process}; \main{\cref*{tab:units}} summarizes seed/growth and capacity controls). The mapping specifies computational operations; it does not model crystallization or adsorption equilibria.
+
+\paragraph{Reading the flowsheet figure.} \main{\cref*{fig:flowsheet}} shows the chemical flowsheet above the algorithm's data-flow network, with matching stream numbers for corresponding connections. The input is a 3DLoMatch+FPFH pair with 2.9\% inliers (green; outliers red). The native \ls{} output misses this pair (TE 36\,cm), while the full pipeline registers it (RE 4.1$^\circ$, TE 19\,cm). The heatmaps represent compatibility and motif scores. Ranking by compatibility alone concentrates triple nuclei in one cluster; the Langmuir vacancy $\theta_x=1/(1+n_x/q)$ spreads the budget over clusters. Each nucleus grows over compatible matches for ten stages that retain the current composition, then yields a rigid hypothesis. Point-to-plane ICP refines up to 32 hypotheses on the observed surfaces. Release ranks each candidate by the weaker of its normalized support $s$ and residual-shape $h$ specifications. Generation is blue and verification is amber. The verification stages also accept other frontends' hypotheses. The arrow strip reports recall on 3DLoMatch+FPFH (1781 pairs) with \ls{}: 40.4\% after generation, 49.6\% after finishing and 53.1\% after release. The refined-pool ceiling is 59.2\%. Diamonds 1--7 identify corresponding connections, including 3 for growth stages and total reflux and 7 for scans and the sample line. The heatmaps, bars and equipment are schematic.
+
+\begin{table*}[t]
+\caption{Unit operations, their computational roles and the interventions used to test them. \main{\cref*{tab:units}} gives compact seed/growth and capacity controls. The first three rows concern the \ngr{} frontend; finishing and the release assay apply to every frontend. Synthetic numbers are successes out of 40 inputs with $m=10$ inliers among $N=4000$ matches on the volume background, from the original estimator configuration with $K=256$ nuclei (\cref{S-sec:s-synthetic}). Training numbers use the 3000 FPFH pairs of the 3DMatch training cohort; time factors are mean frozen frontend times relative to \ngr{}. The remaining real-data results use the test cohorts of \main{\cref*{sec:experiments}}. Section numbers in the second column refer to the main paper.}
+\label{S-tab:s-process}
+\centering\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.55cm}>{\raggedright\arraybackslash}p{4.1cm}X@{}}
+\toprule
+Unit operation & Registration step & Intervention and measured effect \\
+\midrule
+Seeded nucleation & Pair and triple motifs of the compatibility graph seed $K$ independent phases (\cref*{sec:nucleation}) & Seeds replaced by a uniform start (cold start): synthetic successes 19/40 (pairs) and 30/40 (triples) fall to 0/40 \\
+Finite site capacity (Langmuir) & A nucleus's affinity is multiplied by the vacancies $\theta_x=1/(1+n_x/q)$ of its matches (\cref*{sec:capacity}) & Removed (\ngr): training pairs with a correct refined candidate 2487 $\to$ 2429; twice the nuclei instead: 2447 at 1.64$\times$ the frontend time (site capacity: 1.13$\times$) \\
+Total reflux & Ten multiplicative growth stages retain the current composition (\cref*{sec:reflux}) & Growth removed: 19/40 $\to$ 2/40 with pair nuclei, 30/40 $\to$ 26/40 with triples; pair-seeded composition reset to the nucleus at every stage: 19/40 $\to$ 4/40 \\
+Multi-stream finishing & Up to 32 candidates refined by two-scale ICP on the observed surfaces (\cref*{sec:finishing}) & Replaced by ICP of the native winner: 3DLoMatch+FPFH recall 49.6\% $\to$ 43.0\% (\ls); by top-32 + the same ICP + selection by correspondence support: 32--72 fewer pairs for each of RANSAC, SC$^2$-PCR, MAC, TurboReg and \ngr{} \\
+Release assay & The candidate whose weaker normalized specification, support ($M\sqrt{I}$) or residual shape, is best (\cref*{sec:assay}) & Replaced by the finishing step's anchor rule: 133--189 fewer pairs for each of the five frontends run on all nine cohorts; 3DLoMatch+FPFH 53.1\% $\to$ 49.6\% (\ls) \\
+\bottomrule
+\end{tabularx}
+
+\end{table*}
+
+\paragraph{Process analogies in computation.} Simulated annealing~\cite{kirkpatrick1983annealing} applies a rule from materials processing to optimization. Here the analogies specify unit operations whose computational roles can be tested by intervention.

@@ -1,0 +1,84 @@
+\section{Registration as a separation process}
+\label{sec:method}
+
+Given $N$ putative matches $(p_i,q_i)\in\mathbb R^3\times\mathbb R^3$ and observed clouds $X,Y$, we seek a rigid transform $(R,t)$. In \cref{fig:flowsheet}, recovery generates and preserves pose hypotheses, while conversion allocates refinement and selects the final pose. The operations share a candidate pool and its geometric evidence, with a separate budget or decision criterion at each stage. Full implementation details are in \supp{\cref*{S-sec:s-method}}.
+
+\subsection{Seeded nucleation}
+\label{sec:nucleation}
+
+With one correct match in a hundred, a uniform initialization places most of its mass on outliers. We initialize candidate phases from geometric motifs, following the use of seed crystals to initiate crystallization in a dilute solution. The zero-diagonal compatibility graph is
+\begin{equation}
+\Lambda_{ij}=\exp\!\Big(-\frac{(\|p_i-p_j\|-\|q_i-q_j\|)^2}{2\sigma_c^2}\Big),\qquad i\neq j.
+\label{eq:compat}
+\end{equation}
+Here $\sigma_c=0.375\tau$, with the distance scale $\tau$ of \cref{sec:finishing}. Pairs are ranked by the second-order compatibility $\Lambda_{ab}(\Lambda^2)_{ab}$~\cite{chen2022sc2} and triples by $T_{abc}=\Lambda_{ab}\Lambda_{bc}\Lambda_{ca}\sum_d\Lambda_{ad}\Lambda_{bd}\Lambda_{cd}$. Each selected motif initializes one phase, a probability vector over all matches, $w^{(0)}_i\propto\delta_{ia}+\delta_{ib}+\Lambda_{ai}\Lambda_{bi}$ for a pair $(a,b)$ and analogously for a triple (\supp{\cref*{S-sec:s-method}}). A background-load scheduler uses 256 pair seeds when $(N-2)\bar\Lambda^2<1$, where $\bar\Lambda$ is the mean off-diagonal compatibility, a background-support proxy below one under an independent-edge approximation. Otherwise it extends a shortlist of 4096 pairs to $K=1024$ triples. All $K$ phases evolve independently.
+
+\subsection{Finite site capacity}
+\label{sec:capacity}
+
+A cluster of $n$ mutually compatible wrong matches contains $\binom{n}{2}$ internal pairs, each supported by about $n-2$ triangles. Among $m$ true inliers, a true pair collects about $m-2$, only 8 to 23 for the 10 to 25 inliers typical of hard pairs. Ranking by compatibility alone can therefore fill most seed slots with motifs from a few incorrect clusters (\cref{sec:crowding}).
+
+Finite adsorption capacity motivates a penalty on repeated use of each match~\cite{langmuir1918}. We assign match $x$ a site vacancy
+\begin{equation}
+\theta_x=\frac{1}{1+n_x/q},
+\label{eq:vacancy}
+\end{equation}
+where $n_x$ counts the already selected motifs containing $x$. A motif's affinity is discounted by the vacancies of its matches, $T_{abc}\,\theta_a\theta_b\theta_c$ (pairs analogously). The first half of the pair shortlist and of the nuclei keep the original ranking. We fill the second half greedily by discounted affinity from a deeper ranking. Growth, fitting and scoring are unchanged. The resulting frontend is NGRR-LS, the generator of the NGRR framework (nucleate, grow, refine, release) with Langmuir site capacity. Without capacity, the same generator is NGR. The vacancy is a Langmuir-form occupancy feedback rule, not a derived adsorption equilibrium. We fixed its capacities, $q=8$ for pairs and $q=4$ for triples, at pre-registration and never tuned them. \Cref{sec:crowding} compares three alternatives. MMR~\cite{carbonell1998mmr} subtracts the largest overlap with any single selected motif. Hard capacity rejects a motif once one of its matches is held $q$ times. Pose NMS rejects a nucleus whose three-point pose repeats an earlier one.
+
+\subsection{Total-reflux growth}
+\label{sec:reflux}
+
+Each phase undergoes ten updates:
+\begin{equation}
+w_i^{(s+1)}=\frac{w_i^{(s)}\,[\epsilon+N(\Lambda w^{(s)})_i]^{\beta}}{\sum_j w_j^{(s)}\,[\epsilon+N(\Lambda w^{(s)})_j]^{\beta}},\quad \epsilon=1,\ \beta=2.
+\label{eq:growth}
+\end{equation}
+The factor $w_i^{(s)}$ retains the current composition when applying the support update. This follows the retention principle of total reflux, in which condensate is returned to the column. Growth can also reinforce a coherent incorrect cluster. Each grown phase gives a weighted Kabsch fit~\cite{kabsch1976}, refitted twice on matches whose residual $r_i$ is below a fixed radius $\tau_c=\tau$. The native winner maximizes the number of these matches with pair seeds, with a small mean-residual penalty (the \emph{count readout}) and $\sum_i[1-r_i/\tau_c]_+$ with triple seeds (the \emph{MAE readout}).
+
+\subsection{Multi-stream finishing}
+\label{sec:finishing}
+
+Finishing distributes a limited refinement budget across pose hypotheses before final selection. Let $\mathcal H$ contain the frontend's candidate pool and native winner. Given the observed clouds, finishing allocates $A_B=\mathcal A_B(\mathcal H;X,Y)$, $|A_B|\le B$, and returns the valid refined pool
+\begin{equation}
+V=\{\mathcal R(T;X,Y):T\in A_B\},
+\label{eq:conversion}
+\end{equation}
+where $\mathcal R$ is the fixed ICP procedure. Release selects from $V$. Allocation uses complementary evidence and pose diversity to avoid spending the budget on repeated poses. The frontend retains its native refinement.
+
+We retain the native winner in a shortlist of at most 32 candidates separated by $5^\circ$ and $\tau$ in pose space. The shortlist ranks the frontend's stored hypotheses by $M$ alone, for example the best 2000 of RANSAC's $10^6$ trials. Full-query $G$ is evaluated on this shortlist and selected auxiliary candidates; the coarse $I$ screen can examine the entire raw and auxiliary pools. Up to 16 primary refinements are allocated by interleaving rankings of correspondence support $M$, surface support $G$, and $MG$. We then add distinct candidates from the non-dominated correspondence/information-support frontier, up to a total cap $B=32$. This retains candidates with different trade-offs between the two cues. NGR's direct nucleus poses enter the same allocation. Each selected pose undergoes two-scale point-to-plane ICP~\cite{besl1992icp,chen1992medioni} at $2\tau$ and $\tau$, with Tukey weights and at most ten iterations per scale. We use $\tau=0.1$\,m indoors, $0.3$\,m on ETH and $0.6$\,m on KITTI. Release adds no refinement.
+
+Let $\kappa(r)=[1-r/\tau]_+$. Correspondence support is $M(T)=\sum_i\kappa(\|Rp_i+t-q_i\|)$. To compute surface support $G(T)$, we average $\kappa(d)$ in each nearest-neighbor direction between the clouds, then take the harmonic mean of these averages. Information support $I(T)$ uses the same construction with normalized leverage weights, computed once on each cloud's query points and independent of $T$,
+\begin{equation}
+a_x\propto j_x^\top(J^\top J)^\dagger j_x,\qquad
+j_x=[(\widetilde x\times \nu_x)^\top,\nu_x^\top]^\top ,
+\end{equation}
+where $\widetilde x$ is centered and scale-normalized and $\nu_x$ is a surface normal~\cite{gelfand2003stable}. Leverage weights each query by its relative contribution to the point-to-plane constraints. Fitting uses a fixed random half of the source cloud, and surface queries use the other half of each cloud, at most 4096 points each.
+
+For the finishing-only ablation, an anchor maximizes $M\sqrt G$ among primary refinements. A challenger is admitted if it improves $M\sqrt I$ without reducing $I$. The complete pipeline keeps the valid refined pool $V$ for release.
+
+\subsection{Release assay}
+\label{sec:assay}
+
+A broad accidental alignment can have substantial support, while a small coherent patch can have concentrated residuals. Release therefore evaluates both the extent and the quality of agreement. For candidate $k$ in the refined pool $V$, the support channel is $s_k=M_k\sqrt{I_k}/\max_{j\in V}M_j\sqrt{I_j}$. The shape channel measures how tightly the supported queries lie on the other surface. For the $m$ query points whose nearest-neighbor distance $d$ is below $\tau$, let $u=d^2/\tau^2$ and $\bar u=\frac1m\sum u$. Under the idealized radial reference density $p_0(d)=2d/\tau^2$ on $[0,\tau)$, $\Pr(d\le r\mid d<\tau)=r^2/\tau^2$, so $u$ is uniform on $[0,1)$ and $\bar u\approx\frac12$. The Cram\'er rate of a smaller mean under this null,
+\begin{equation}
+\psi(\bar u)=\sup_{\beta\ge0}\Big\{-\beta\bar u-\log\frac{1-e^{-\beta}}{\beta}\Big\},
+\label{eq:psi}
+\end{equation}
+is the per-point evidence that the residuals concentrate near zero. It is zero for $\bar u\ge\frac12$. Averaging $\psi$ over the two directions gives $J_k$, and $h_k=\exp(J_k-\max_{j\in V}J_j)$. Release selects
+\begin{equation}
+\hat k=\arg\max_{k\in V}\ \min\{s_k,\,h_k\},
+\label{eq:assay}
+\end{equation}
+breaking ties by $s_k$, then $h_k$, then queue order. The weaker normalized channel determines each candidate's score, so a high score requires both specifications. This rule ranks candidates within $V$ without fitting a mixing weight.
+
+For nondegenerate normalized channels, consider the surrogate utility $\lambda s_k+(1-\lambda)h_k$ for an unknown exchange rate $\lambda\in[0,1]$. The regret of choosing $k$ is convex in $\lambda$, so its maximum over $\lambda$ lies at an endpoint. Since both channels are normalized to a maximum of one, this maximum is $\max\{1-s_k,1-h_k\}$. Minimizing worst-case regret therefore gives \cref{eq:assay}. \Cref{sec:verification} evaluates the resulting ranking and decision rule on real scans.
+
+A conditional logit can instead select among the candidates of a pool. It uses 26 label-free features of the finishing quantities and is trained only on the 3DMatch training scenes. We report this learned variant separately from the training-free results.
+
+\phantomsection\label{sec:diagnosis}
+To separate recovery from final selection, let $z_\ell$ indicate whether refined pool $V_\ell$ contains a correct pose and $y_\ell$ whether release selects one. Over $L$ pairs,
+\begin{equation}
+C=\frac{\sum_\ell z_\ell}{L},\quad R=\frac{\sum_\ell y_\ell}{L},\quad E=\frac{\sum_\ell y_\ell}{\sum_\ell z_\ell},\qquad R=CE.
+\label{eq:coverage}
+\end{equation}
+Set $E=0$ if no pair is covered. Coverage depends on generation and the specified refinement, so we hold finishing fixed when comparing generators. Holding the refined pool fixed isolates release.

@@ -1,0 +1,42 @@
+\subsection{Overall performance and cross-frontend \texorpdfstring{\mbox{transfer}}{transfer}}
+\label{sec:product}
+
+
+\begin{table}[t]
+\caption{Stage diagnosis on 1781 LoMatch+FPFH pairs. Gains (pp) compare winner ICP with native output, finishing with winner ICP, and release with finishing. $C$: correct refined-pose coverage; $E$: correct selection among covered pairs. Final accuracy and time are in \cref{tab:main}.}
+\label{tab:joint}
+\centering
+\input{generated/joint_table}
+\end{table}
+
+\Cref{tab:joint} diagnoses the successive stages of the common backend, while \cref{tab:main} compares final accuracy, pose errors and runtime. The backend improves the six original frontends by 10.8 to 13.7 percentage points on 3DLoMatch+FPFH. Refining only each native winner accounts for 2.6 to 4.8 of these points, and multi-candidate finishing and release add the remaining 8.3 to 10.3. The backend's finishing stage takes 0.09 to 0.11\,s in the 16-thread timing setting. NGRR-LS improves from 40.4\% to 53.1\% with FPFH and from 59.2\% to 66.7\% with FCGF. These gains hold for frontends based on random sampling, spectral or compatibility scores, cliques and seeded growth.
+
+With this backend fixed, NGRR-LS reaches 53.1\% recall, compared with 52.6\% for SC$^2$-PCR and 51.6\% for MAC. The paired difference between NGRR-LS and SC$^2$-PCR is not statistically significant (+42/$-$32, raw $p=0.30$). Their reported median registration-stage times are 0.39\,s and 0.92\,s, respectively. Compiled NGRR-LS therefore has a 57.2\% lower measured median time on the common timing subset. The paired comparison with MAC is +55/$-$28 (raw $p=0.004$), and the paired comparison with NGR is +45/$-$9. Starting from the same correspondences, SC$^2$-PCR++~\cite{chen2023sc2pp}, Regor~\cite{zhao2025regor} and DualReg~\cite{li2026dualreg} natively reach 43.9, 45.3 and 37.4\% (\cref{tab:main}). Across all nine cohorts, the five frontends evaluated on all nine cohorts register 9771 to 9948 of 12\,035 pairs, and NGRR-LS registers 9920. On 3DLoMatch+FPFH, the scene bootstrap gives a 12.7 [10.3,14.1] percentage-point gain over the native output and a 2.0 [1.5,2.5] percentage-point gain over NGR. Its difference from SC$^2$-PCR is 0.6 [$-0.3$,1.6] percentage points (\supp{\cref*{S-sec:s-results}}).
+
+\begin{table*}[t]
+\caption{Controlled-input performance (first $\le5000$ matches). RR in \%; RE ($^\circ$) and TE (cm) are means over each row's successful pairs. F+R: common finishing and release. Bold/underline: best/second RR within native or F+R rows. Time: median registration stage on 100 LoMatch+FPFH pairs, EPYC 9655P CPU (16 threads; MAC 12), except Regor (GPU); loading/features excluded. $^\dagger$: GPU accuracy, separate CPU timing. -- denotes unavailable settings. SC$^2$-PCR++ and Regor additionally use descriptors; Regor re-matches, and DualReg uses estimated normals. Protocols and timing: Supp.~Sec.~\ref*{S-sec:s-results}.}
+\label{tab:main}
+\centering\input{generated/controlled_full_table}
+\end{table*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_dilute.pdf}
+\caption{(a) All 888 3DLoMatch+FPFH pairs below 1\% inliers: native, finishing, release and refined-pool ceiling. (b) Two recovery cases selected from 97 pairs where the full pipeline succeeds and all four native baselines fail. Panel (a) gives the shared-backend comparison: SC$^2$-PCR registers 152 pairs and NGRR-LS 147.}
+\label{fig:dilute}
+\end{figure*}
+
+
+
+{\clubpenalty=10000\widowpenalty=10000
+\Cref{fig:dilute} examines 888 3DLoMatch+FPFH pairs with fewer than 1\% inliers. Native outputs register 26 to 37 pairs, finishing registers 82 to 124, and release registers 106 to 152. NGRR-LS increases from 37 to 147. Among the 381 pairs with 11 to 25 true inliers, it registers 51, the highest count among the six frontends with the common backend. With at most ten inliers, all methods register 3 to 4 of 250 pairs.\par}
+
+
+In the time--accuracy plane of \cref{fig:pareto}, NGRR-LS with the backend has higher recall and a lower median time than the other original baseline frontends in \cref{tab:main}, with or without the backend.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_pareto.pdf}
+\caption{Recall on all 1781 3DLoMatch+FPFH pairs against the median registration-stage time on the 100-pair timing subset (16 CPU threads, MAC 12; \cref{tab:main}). Hollow: native output. Filled: the same frontend with the common finishing and release. Square, triangle, pentagon: native SC$^2$-PCR++, DualReg, Regor (GPU) on the same inputs. $^\dagger$: GPU recall with separate CPU timing. Dashed: CPU Pareto front, excluding $^\dagger$ and Regor. NGRR-LS with the backend has the highest recall; every faster baseline reaches at most 45.3\%.}
+\label{fig:pareto}
+\end{figure}

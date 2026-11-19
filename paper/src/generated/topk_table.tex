@@ -1,0 +1,18 @@
+\footnotesize\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{lrrrrrrrr}
+\toprule
+& & \multicolumn{3}{c}{Released correct} & \multicolumn{2}{c}{A vs.\ B} & \multicolumn{2}{c}{ICP calls} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+Frontend & Cells & A & B & C & $+a/{-}b$ & Holm $p$ & A $=$ B & C \\
+\midrule
+RANSAC-1M & 12035 & 9771 & 9701 & 9729 & $+111/{-}41$ & $4\times10^{-8}$ & 179562 & 252148 \\
+SC$^2$-PCR & 12035 & 9948 & 9885 & 9902 & $+109/{-}46$ & $9\times10^{-7}$ & 244190 & 367848 \\
+MAC & 8538 & 6550 & 6440 & 6481 & $+156/{-}46$ & $2\times10^{-14}$ & 188278 & 273216 \\
+TurboReg & 12035 & 9886 & 9746 & 9783 & $+186/{-}46$ & $3\times10^{-20}$ & 255238 & 385120 \\
+LGR (GeoTr) & 3404 & 2990 & 2987 & 2990 & $+10/{-}7$ & 0.63 & 69221 & 108928 \\
+NGR & 12035 & 9857 & 9753 & 9786 & $+140/{-}36$ & $7\times10^{-15}$ & 128805 & 158991 \\
+\ls{} & 12035 & 9920 & 9828 & 9843 & $+137/{-}45$ & $2\times10^{-11}$ & 151523 & 201150 \\
+\midrule
+All & 72117 & 58922 & 58340 & 58514 & $+849/{-}267$ & -- & 1216817 & 1747401 \\
+\bottomrule
+\end{tabular}%

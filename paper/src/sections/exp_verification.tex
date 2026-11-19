@@ -1,0 +1,21 @@
+\subsection{From candidate coverage to final registration}
+\label{sec:verification}
+\begin{table}[t]
+\caption{Own-process controls. (a) Nested volume inputs, $K=256$, fixed count readout. (b) Same budget/backend; modes: mean distinct poses among 1024; coverage and registrations: pair counts. (c) Cells are frontend--input evaluations. Same ICP and release; Matched K matches finishing calls per cell, Full K uses the top-32 bank. Total calls: 1\,028\,539 for matched/finishing, 1\,474\,185 for full. MAC is excluded from (c).}
+\label{tab:units}\centering\input{generated/units_table}
+\end{table}
+\begin{table}[t]
+\caption{Registration recall (\%) as reported in each paper, next to ours on our inputs (Supp.~Sec.~\ref*{S-sec:s-literature}). *: from another paper's table; $^\dagger$: preprint. Bold / underline: best / second best.}
+\label{tab:literature}
+\centering\input{generated/literature_main}
+\end{table}
+
+
+
+\Cref{tab:joint} separates the stage gains from candidate coverage and final conversion; \cref{tab:units} tests seeding, retained growth, capacity and allocation. On 3DLoMatch+FPFH, refining only the native NGRR-LS winner reaches 43.0\%. Finishing a selected multi-candidate pool reaches 49.6\%, and release reaches 53.1\% on the same refined pool. For each of the other five frontends, refining the top 32 hypotheses with the same ICP and selecting by truncated correspondence support gives 32 to 72 fewer successes than finishing. Selecting by highest ICP fitness gives 25.3 to 38.4\% recall. On the fixed refined pools of all 63\,579 cells except MAC's, release selects 52\,372 correct cells and exceeds all eight published training-free verification rules we implemented, the best being CorAl~\cite{adolfsson2021coral} (51\,432) and the prerejective score~\cite{buch2013prerejective} (51\,376). On the 39\,590 descriptor-available cells, FS-TCD~\cite{chen2023sc2pp} selects 29\,891 versus 31\,064 for release. Complete rule and per-cohort comparisons are in Supp.~Sec.~\ref*{S-sec:s-selectors}.
+
+\Cref{tab:units}c controls for the actual ICP budget and final decision: matched Top-K uses exactly as many calls as finishing on each cell, with the same SurfaceICP and release. Finishing gains $+693/{-}221$ correct cells; all five correspondence frontends remain significant after Holm correction ($p\le9\times10^{-7}$). On LoMatch+FPFH with NGRR-LS it registers 946/1781 pairs (53.12\%), versus 907/1781 (50.93\%) for matched Top-K. Full Top-32 uses 43.3\% more calls yet registers fewer cells (Supp.~Sec.~\ref*{S-sec:s-topk}).
+
+Capacity raises refined-pool coverage from 56.4\% to 59.2\% on 3DLoMatch+FPFH, while native recall changes only from 40.3\% to 40.4\%. With the same verification, NGR without capacity reaches 51.1\%, compared with 53.1\% for NGRR-LS. The final 946 successes correspond to 89.8\% of the 1054 covered pairs. On FCGF, capacity raises coverage from 70.1\% to 72.0\%, and the complete pipeline selects a correct pose for 92.7\% of covered pairs. Capacity primarily increases the chance that a correct candidate remains available for refinement, while finishing and release convert the resulting pool into registrations.
+
+On fixed NGRR-LS refined pools over nine cohorts, support alone and shape alone yield 9760 and 9759 successes, while their minimum yields 9920. Product and harmonic mean perform similarly across frontends. A weighted sum fitted on training data improves NGRR-LS to 9992, and an optional learned release reaches 10\,084. The shape null is not calibrated on real wrong poses, but the score ranks candidates with AUC 0.83 to 0.99 (\supp{\cref*{S-sec:s-verification,S-tab:s-rules}}). The stage diagnostics divide NGRR-LS's 835 failed 3DLoMatch+FPFH outputs into 727 pairs without a correct refined candidate and 108 pairs with one that release does not select. The latter group isolates errors in final selection within an existing candidate pool.

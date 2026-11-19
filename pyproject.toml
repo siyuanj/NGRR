@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=65.5"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ngr-registration"
+version = "0.2.0"
+description = "Capacity-aware rigid registration with reusable surface verification"
+readme = "README.md"
+authors = [{name = "Chengrui Xu"}]
+requires-python = ">=3.11,<3.12"
+dependencies = ["numpy==1.26.4", "scipy==1.15.3", "torch==2.5.1"]
+
+[project.urls]
+Homepage = "https://siyuanj.github.io/NGRR/"
+Repository = "https://github.com/siyuanj/NGRR"
+
+[project.optional-dependencies]
+surface = ["open3d==0.20.0"]
+test = ["pytest==9.0.3"]
+
+[tool.setuptools]
+packages = ["ngr"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

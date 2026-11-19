@@ -1,0 +1,37 @@
+\footnotesize\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrr@{}}
+\toprule
+\multicolumn{5}{@{}l@{}}{\textbf{(a) Dilution: 10 inliers, successes / 40}} \\
+Initialization / stages & $N=1000$ & 2000 & 3000 & 4000 \\
+\midrule
+Uniform / 10 & 11 & 1 & 2 & 0 \\
+Pair / 0 & 38 & 11 & 3 & 2 \\
+Pair / 10 & 40 & 35 & 29 & 19 \\
+Triple / 0 & 36 & 36 & 33 & 26 \\
+Triple / 10 & 39 & 37 & 36 & 30 \\
+\midrule
+\end{tabular*}\par\noindent
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrr@{}}
+\multicolumn{5}{@{}l@{}}{\textbf{(b) Capacity: 3000 training pairs}} \\
+Rule & Modes & Raw cover. & Refined cover. & Registered \\
+\midrule
+Ranking & 222.6 & 2528 & 2429 & 2298 \\
+Soft capacity & \textbf{409.6} & \textbf{2639} & \textbf{2487} & \textbf{2326} \\
+MMR & 337.8 & \underline{2624} & \textbf{2487} & \textbf{2326} \\
+Hard capacity & \underline{363.2} & 2615 & \underline{2467} & \underline{2312} \\
+Pose NMS & 243.0 & 2547 & 2438 & 2310 \\
+\midrule
+\end{tabular*}\par\noindent
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrr@{}}
+\multicolumn{5}{@{}l@{}}{\textbf{(c) Allocation: correct outputs}} \\
+Frontend & Cells & Matched K & Full K & Finishing \\
+\midrule
+RANSAC-1M & 12035 & 9701 & 9729 & \textbf{9771} \\
+SC$^2$-PCR & 12035 & 9885 & 9902 & \textbf{9948} \\
+TurboReg & 12035 & 9746 & 9783 & \textbf{9886} \\
+LGR & 3404 & 2987 & \textbf{2990} & \textbf{2990} \\
+NGR & 12035 & 9753 & 9786 & \textbf{9857} \\
+\ls{} & 12035 & 9828 & 9843 & \textbf{9920} \\
+\midrule
+All & 63579 & 51900 & 52033 & \textbf{52372} \\
+\bottomrule\end{tabular*}

@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.venv/
+
+# LaTeX build products (main.bbl is kept: arXiv needs it)
+paper/src/main.aux
+paper/src/main.blg
+paper/src/main.log
+paper/src/main.out
+paper/src/main.brf
+paper/src/main.pdf
+paper/ngrr_arxiv.pdf
+paper/ngrr_arxiv_source.tar.gz
+
+# macOS
+.DS_Store

@@ -1,0 +1,10 @@
+\subsection{Generalization and efficiency}
+\label{sec:cost}
+Verification improves every tested frontend on ETH, which was not used for algorithm-adoption decisions. NGRR-LS rises from 78.1\% to 98.7\%. Under GeoTransformer's official scene-mean criterion, verification improves every frontend by 0.5 to 2.4 percentage points on 3DLoMatch and 0.4 to 1.0 on 3DMatch. LGR rises from 74.03\% to 75.77\% on 3DLoMatch. NGRR-LS does not rank first on these learned correspondences (\supp{\cref*{S-tab:s-official}}).
+
+Published results obtained with different inputs or processing are reported separately in \cref{tab:literature}.
+
+\paragraph{Measured cost of conversion.}
+The compiled frontend restricts phase growth to initial supports with non-negligible weight and avoids negligible triplet terms. Dense products are retained when supports are large. Finishing compiles ICP and suppression, uses exact thresholded surface queries on a spatial grid, and computes release moments in place. These CPU changes reduce the timed NGRR-LS stages to 0.78\,s at four threads and 0.39\,s at sixteen on the timed cohort. The 16-thread result appears in \cref{tab:main}, and the four-thread result appears in \supp{\cref*{S-tab:s-cost}}.
+
+The final implementation preserves the success/failure indicators for native output, refined-pool coverage and final release on all 15\,035 checked train/test inputs. Frontend speedups range from 3.3 to 7.2$\times$ on FPFH cohorts to 1.4 to 4.4$\times$ on learned correspondences. Switches were calibrated for runtime on separate inputs. Validation details are in \supp{\cref*{S-sec:s-cost}}.

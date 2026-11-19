@@ -1,0 +1,31 @@
+\fontsize{8}{9}\selectfont\setlength{\tabcolsep}{1.35pt}
+\begin{tabular}{@{}lccccccccccccccccccc@{}}
+\toprule
+ & \multicolumn{6}{c}{3DMatch} & \multicolumn{6}{c}{3DLoMatch} & \multicolumn{6}{c}{KITTI} & Time (s) \\
+\cmidrule(lr){2-7}\cmidrule(lr){8-13}\cmidrule(lr){14-19}
+ & \multicolumn{3}{c}{FPFH} & \multicolumn{3}{c}{FCGF} & \multicolumn{3}{c}{FPFH} & \multicolumn{3}{c}{FCGF} & \multicolumn{3}{c}{FPFH} & \multicolumn{3}{c}{FCGF} & 3DLM \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}\cmidrule(lr){11-13}\cmidrule(lr){14-16}\cmidrule(lr){17-19}
+Method & RR & RE & TE & RR & RE & TE & RR & RE & TE & RR & RE & TE & RR & RE & TE & RR & RE & TE & FPFH \\
+\midrule
+\multicolumn{20}{@{}l}{\emph{Correspondence frontends (C++ MAC also uses clouds to set its distance scale)}} \\
+RANSAC-1M & 82.32 & 2.40 & 7.13 & 92.48 & 2.20 & 6.74 & 35.09 & 4.14 & 10.57 & 57.94 & 3.85 & 10.80 & \underline{99.64} & 0.36 & 8.25 & \underline{97.30} & 0.31 & 21.38 & 0.44 \\
+SC$^2$-PCR & 83.67 & 2.19 & 6.79 & 92.91 & 2.10 & 6.51 & 38.97 & 3.96 & 10.41 & 58.28 & 3.58 & 10.42 & 99.46 & 0.30 & 6.56 & 95.86 & 0.31 & 20.01 & 0.83 \\
+MAC & 82.99 & 2.12 & 6.63 & 93.47 & 2.08 & 6.49 & 39.98 & 3.77 & 10.17 & 59.01 & 3.52 & 10.32 & \underline{99.64} & 0.29 & 6.71 & 95.68 & 0.30 & 20.12 & 1.55 \\
+TurboReg & 83.73 & 2.24 & 6.80 & 93.35 & 2.08 & 6.47 & 38.46 & 3.89 & 10.21 & 58.67 & 3.58 & 10.35 & \textbf{99.82} & 0.30 & 6.46 & 95.50 & 0.30 & 19.94 & 1.84 \\
+NGR & 83.36 & 2.13 & 6.63 & 92.85 & 2.07 & 6.42 & 40.26 & 3.79 & 10.21 & 58.96 & 3.57 & 10.37 & \textbf{99.82} & 0.31 & 6.96 & 95.32 & 0.31 & 19.73 & 0.29 \\
+NGRR-LS & 83.43 & 2.13 & 6.64 & 93.16 & 2.06 & 6.41 & 40.43 & 3.81 & 10.21 & 59.24 & 3.56 & 10.34 & \underline{99.64} & 0.31 & 7.12 & 95.32 & 0.31 & 19.72 & 0.30 \\
+\midrule
+\multicolumn{20}{@{}l}{\emph{Using the point clouds}} \\
+SC$^2$-PCR++$^\dagger$ & \underline{87.86} & 2.16 & 6.69 & \underline{93.72} & 2.10 & 6.50 & \underline{43.85} & 3.83 & 10.35 & \underline{60.42} & 3.53 & 10.41 & \textbf{99.82} & 0.33 & 7.33 & \textbf{98.20} & 0.33 & 21.13 & 0.71 \\
+Regor & \textbf{88.91} & 1.70 & 5.93 & \textbf{94.15} & 1.80 & 6.10 & \textbf{45.26} & 2.91 & 9.26 & \textbf{61.31} & 2.95 & 9.43 & -- & -- & -- & -- & -- & -- & 0.11 GPU \\
+DualReg & 82.07 & 1.84 & 6.21 & 92.73 & 1.83 & 6.39 & 37.39 & 3.15 & 9.40 & 58.28 & 3.06 & 9.83 & 94.05 & 0.25 & 7.52 & 93.51 & 0.26 & 18.54 & 0.09 \\
+\midrule
+\multicolumn{20}{@{}l}{\emph{Each frontend + our common finishing and release (F+R)}} \\
+RANSAC-1M + F+R & 90.20 & 1.57 & 5.96 & \textbf{94.89} & 1.60 & 6.09 & 48.79 & 2.53 & 8.96 & \textbf{67.10} & 2.55 & 9.21 & \textbf{99.82} & 0.13 & 3.55 & \textbf{99.46} & 0.12 & 3.43 & 0.54 \\
+SC$^2$-PCR + F+R & \textbf{91.00} & 1.58 & 5.98 & \textbf{94.89} & 1.61 & 6.12 & \underline{52.55} & 2.56 & 8.96 & \underline{66.98} & 2.56 & 9.18 & \textbf{99.82} & 0.13 & 3.55 & \underline{99.28} & 0.13 & 3.64 & 0.92 \\
+MAC + F+R & 90.45 & 1.56 & 5.94 & \underline{94.76} & 1.61 & 6.10 & 51.60 & 2.55 & 8.82 & 66.37 & 2.54 & 9.16 & \textbf{99.82} & 0.13 & 3.56 & 98.92 & 0.12 & 3.55 & 1.68 \\
+TurboReg + F+R & 90.39 & 1.57 & 5.98 & \underline{94.76} & 1.61 & 6.10 & 51.54 & 2.50 & 8.89 & 66.09 & 2.54 & 9.18 & \textbf{99.82} & 0.14 & 3.54 & \textbf{99.46} & 0.13 & 3.67 & 1.96 \\
+NGR + F+R & 90.33 & 1.58 & 5.99 & 94.45 & 1.61 & 6.11 & 51.09 & 2.54 & 8.96 & 65.69 & 2.57 & 9.30 & \textbf{99.82} & 0.13 & 3.57 & \underline{99.28} & 0.12 & 3.41 & 0.38 \\
+NGRR-LS + F+R & \underline{90.51} & 1.57 & 5.95 & \textbf{94.89} & 1.61 & 6.14 & \textbf{53.12} & 2.54 & 8.99 & 66.70 & 2.55 & 9.23 & \textbf{99.82} & 0.13 & 3.57 & \textbf{99.46} & 0.12 & 3.44 & 0.39 \\
+\bottomrule
+\end{tabular}

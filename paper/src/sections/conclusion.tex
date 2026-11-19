@@ -1,0 +1,12 @@
+\section{Discussion and conclusion}
+\label{sec:conclusion}
+
+We present a chemical-process-inspired framework that organizes robust registration as the recovery, preservation, enrichment, refinement and selection of pose hypotheses. Motif nucleation introduces geometrically supported candidate phases, site capacity discourages repeated clusters of matches from consuming the nucleus budget, and retained growth enriches each phase from its current composition.
+
+Finishing allocates a fixed refinement budget across diverse pose hypotheses and refines them on the observed surfaces. Release then selects from the refined pool using complementary support and residual-shape evidence. The shared-ICP controls isolate the contributions of candidate allocation and final selection.
+
+Capacity raises refined-pool coverage on 3DLoMatch+FPFH from 56.4\% to 59.2\%, although its native recall changes from 40.3\% to 40.4\%. Finishing and release raise NGRR-LS from 43.0\% with winner-only ICP to 49.6\% and 53.1\%. The complete pipeline selects a correct pose for 89.8\% of covered pairs. Applying the same verification procedure to six different frontends raises recall by 10.8 to 13.7 percentage points on 3DLoMatch+FPFH.
+
+In the controlled dilution experiments, seeded growth improves recovery when a small correct set must be enriched. On real pairs with very few inliers, candidate coverage and final selection both remain difficult. The diversity and score controls further delimit the roles of site capacity and release (\supp{\cref*{S-sec:s-limitations}}).
+
+The gains across heterogeneous frontends suggest that a frontend's final estimate does not fully characterize its registration potential. The gap between native recall and refined-pool coverage supports this interpretation. We therefore view registration as a budgeted process of recovery and conversion. Under a fixed refinement procedure, candidate coverage and conditional selection effectiveness should be measured separately.

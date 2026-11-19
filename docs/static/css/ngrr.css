@@ -1,0 +1,68 @@
+/* Page-specific additions on top of the template's index.css. */
+:root {
+  --primary-color: #2a6bb0;
+  --primary-hover: #1f5590;
+  --gradient-accent: linear-gradient(135deg, #e0912f 0%, #2a6bb0 100%);
+}
+
+.publication-title { font-size: 2.6rem !important; }
+.publication-authors sup { font-size: .7em; }
+.publication-affiliation { color: var(--text-secondary); font-size: 1.15rem; margin-bottom: .2rem; }
+
+.link-block .button[disabled] {
+  background: var(--background-accent) !important;
+  color: var(--text-secondary) !important;
+  box-shadow: none;
+  cursor: default;
+  opacity: 1;
+}
+
+.paper-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.paper-figure.framed img {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: .75rem;
+}
+
+.figure-caption {
+  color: var(--text-secondary);
+  font-size: .95rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.teaser .subtitle {
+  font-size: 1.15rem !important;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin-top: 1.75rem !important;
+}
+
+.method-text p { margin-bottom: 1.1rem; }
+.method-text .math { font-family: "Times New Roman", Times, serif; font-style: italic; white-space: nowrap; }
+
+.results-table-wrap { overflow-x: auto; margin-top: 1rem; }
+.results-table { width: 100%; border-collapse: collapse; font-size: .92rem; font-variant-numeric: tabular-nums; }
+.results-table th, .results-table td { padding: .38rem .55rem; text-align: center; white-space: nowrap; }
+.results-table th:first-child, .results-table td:first-child { text-align: left; }
+.results-table thead tr:first-child th { border-top: 2px solid var(--text-primary); }
+.results-table thead tr:last-child th { border-bottom: 1px solid var(--text-primary); font-weight: 600; }
+.results-table tbody tr:last-child td { border-bottom: 2px solid var(--text-primary); }
+.results-table tr.group td {
+  font-style: italic; color: var(--text-secondary);
+  padding-top: .75rem; border-bottom: 1px solid var(--border-color);
+}
+.results-table tr.ours td { background: #fdf3e6; }
+.results-table u { text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+@media screen and (max-width: 768px) {
+  .publication-title { font-size: 1.85rem !important; }
+  .content.has-text-justified, .content.has-text-justified p { text-align: left !important; }
+}

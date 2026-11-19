@@ -1,0 +1,17 @@
+\begin{tabular}{lrrrrrrr}
+\toprule
+ & \multicolumn{3}{c}{4 threads} & & \multicolumn{3}{c}{16 threads} \\
+\cmidrule(lr){2-4}\cmidrule(lr){6-8}
+Frontend & Frontend & Finishing & Total & & Frontend & Finishing & Total \\
+\midrule
+RANSAC-1M & 0.50 & 0.13 & 0.62 & & 0.44 & 0.10 & 0.54 \\
+SC$^2$-PCR & 1.18 & 0.11 & 1.30 & & 0.83 & 0.09 & 0.92 \\
+MAC$^\dagger$ & -- & -- & -- & & 1.55 & 0.11 & 1.68 \\
+TurboReg & 2.72 & 0.17 & 2.91 & & 1.84 & 0.11 & 1.96 \\
+\ngr{} & 4.03 & 0.13 & 4.17 & & 1.57 & 0.09 & 1.67 \\
+\ls{} & 4.20 & 0.12 & 4.34 & & 1.73 & 0.09 & 1.82 \\
+\midrule
+\ngr{}, compiled & 0.65 & 0.13 & 0.78 & & 0.29 & 0.10 & 0.38 \\
+\ls{}, compiled & 0.65 & 0.12 & 0.78 & & 0.30 & 0.09 & 0.39 \\
+\bottomrule
+\end{tabular}

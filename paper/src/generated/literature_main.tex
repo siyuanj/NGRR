@@ -1,0 +1,32 @@
+\fontsize{7.5}{8.4}\selectfont\setlength{\tabcolsep}{1.5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrrrr@{}}
+\toprule
+ & \multicolumn{2}{c}{3DMatch $\uparrow$} & \multicolumn{2}{c}{3DLoMatch $\uparrow$} & \multicolumn{2}{c}{KITTI $\uparrow$} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Method & FPFH & FCGF & FPFH & FCGF & FPFH & FCGF \\
+\midrule
+\multicolumn{7}{@{}l@{}}{\emph{Training-free, correspondences only}} \\
+TEASER++~\cite{yang2021teaser} & 75.48* & 85.77* & 35.15* & 46.76* & 91.17* & 94.96* \\
+SC$^2$-PCR~\cite{chen2022sc2} & 83.98 & 93.28 & 38.57* & 57.83 & \underline{99.64} & 98.20 \\
+MAC~\cite{zhang2023mac} & 84.10 & 93.72 & 40.88 & 59.85 & 99.46 & 97.84 \\
+FastMAC~\cite{zhang2024fastmac} & 82.87 & 92.67 & 38.46 & 58.23 & 97.84 & 97.84 \\
+TurboReg~\cite{yan2025turboreg} & 84.10 & 93.59 & 40.99 & 59.74 & 98.56 & 98.38 \\
+FlashReg$^\dagger$~\cite{yu2026flashreg} & 84.01 & 93.41 & 39.25 & 59.12 & 97.83 & 97.66 \\
+\multicolumn{7}{@{}l@{}}{\emph{Training-free, using the point clouds}} \\
+SC$^2$-PCR++~\cite{chen2023sc2pp} & 87.18 & 94.15 & 41.27* & 61.15 & \underline{99.64} & 98.56 \\
+Regor~\cite{zhao2025regor} & 88.48 & 93.96 & 43.96 & -- & \textbf{99.82} & -- \\
+DualReg~\cite{li2026dualreg} & 84.41 & 93.65 & 41.66 & 60.86 & 98.20 & 96.58 \\
+SVC~\cite{zhang2024svc} & 88.66 & 94.58 & 45.76 & 67.77 & \underline{99.64} & 98.74 \\
+\multicolumn{7}{@{}l@{}}{\emph{Learned}} \\
+PointDSC~\cite{bai2021pointdsc} & 78.50 & 93.28 & 20.38* & 56.20* & 98.20 & 98.20 \\
+VBReg~\cite{jiang2023vbreg} & 82.75 & 93.53 & 32.57* & 58.30 & 98.92 & 98.02 \\
+Hunter~\cite{yao2023hunter} & 84.70* & 94.05* & 36.90* & 60.02* & \textbf{99.82*} & -- \\
+HyperGCT~\cite{zhang2025hypergct} & 85.89 & 94.45 & 42.28 & 63.73 & 99.10 & 98.92 \\
+Decision PCR$^\dagger$~\cite{zhang2025decisionpcr} & 88.29 & \underline{95.13} & 45.54 & \textbf{71.59} & -- & -- \\
+\multicolumn{7}{@{}l@{}}{\emph{Ours, on our inputs (training-free unless marked)}} \\
+\ls{} (native) & 83.43 & 93.16 & 40.43 & 59.24 & \underline{99.64} & 95.32 \\
+SC$^2$-PCR + F+R & \underline{91.00} & 94.89 & 52.55 & 66.98 & \textbf{99.82} & \underline{99.28} \\
+\textbf{\ls{} + F+R} & 90.51 & 94.89 & \underline{53.12} & 66.70 & \textbf{99.82} & \textbf{99.46} \\
+\ls{} + learned release & \textbf{92.48} & \textbf{95.44} & \textbf{56.20} & \underline{69.12} & \textbf{99.82} & \textbf{99.46} \\
+\bottomrule
+\end{tabular*}

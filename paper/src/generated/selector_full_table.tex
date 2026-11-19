@@ -1,0 +1,26 @@
+\footnotesize\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Rule on pool A & All & 3DLoMatch & Others & Pairs $+/{-}$ & Pool C \\
+Cells & 72117 & 32674 & 39443 & & 72117 \\
+\midrule
+Release (ours) & 58922 & 21491 & 37431 & -- & 58514 \\
+\midrule
+$M\sqrt{G}$ & 57696 & 20575 & 37121 & $484/62$ & -- \\
+$M$ & 56997 & 20405 & 36592 & $679/78$ & -- \\
+$G$ & 51913 & 15370 & 36543 & $2064/237$ & -- \\
+Truncated Chamfer & 51902 & 15330 & 36572 & $2076/242$ & -- \\
+Fitness + RMSE & 49355 & 13621 & 35734 & $2801/190$ & -- \\
+\midrule
+CorAl~\cite{adolfsson2021coral} & 57792 & 21088 & 36704 & $1066/488$ & 55245 \\
+Prerejective~\cite{buch2013prerejective} & 57704 & 20661 & 37043 & $830/386$ & 56851 \\
+MPV~\cite{razlaw2015mpv} & 57287 & 21100 & 36187 & $1179/464$ & 54733 \\
+GHV~\cite{aldoma2012ghv} & 54582 & 17661 & 36921 & $1503/284$ & 55711 \\
+WLCP~\cite{mellado2014super4pcs} & 53848 & 16869 & 36979 & $1601/279$ & 55567 \\
+LCP~\cite{aiger2008fpcs} & 52644 & 15916 & 36728 & $1875/245$ & 54883 \\
+SAC-IA~\cite{rusu2009fpfh} & 51898 & 15327 & 36571 & $2070/231$ & 54398 \\
+Greedy~\cite{rusu2011pcl} & 49441 & 13669 & 35772 & $2782/206$ & 52574 \\
+\midrule
+Ceiling & 61144 & 23106 & 38038 & & 60336 \\
+\bottomrule
+\end{tabular}%

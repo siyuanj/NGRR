@@ -1,0 +1,37 @@
+\section{Evaluation protocol}
+\label{S-sec:s-protocol}
+
+The protocol summarized in \main{\cref*{sec:protocol}} distinguishes pre-registered decisions from earlier development.
+
+\paragraph{Cohorts.} We use the nine test cohorts in \main{\cref*{sec:experiments}} (12\,035 pairs): 3DMatch and 3DLoMatch with FPFH, FCGF and GeoTransformer correspondences, KITTI with FPFH and FCGF, and ETH with FPFH, an outdoor laser dataset used neither for training nor for any adoption decision. The training cohort is 3000 FPFH pairs from 82 3DMatch training scenes, disjoint from every test scene.
+
+\paragraph{Predating the protocol.} The \ngr{} frontend and finishing procedure were fixed before this protocol. Their development included public-benchmark evaluations, so those benchmarks were not held out for these components.
+
+\paragraph{Under the protocol.} The two components added here, the finite site capacity and the release assay of \main{\cref*{eq:assay}}, were each pre-registered in writing before their first run. The registration specified the rule, constants, adoption margin and, for the assay, a predicted range. Adoption decisions used only the training cohort. \ls{} was the only one of four pre-registered frontend variants to pass its margin; two larger-budget controls, the doubled and tripled nuclei, were pre-registered alongside. The assay passed its margin over the finishing step's own rule, the anchor rule of \cref{S-sec:s-method}. Each adopted component was then run once on the test cohorts. A further pre-registered component filled unused ICP slots with more candidates. It passed the training-cohort margin by raising the refined-pool ceiling (+37 pairs) while leaving the finishing step's own choice essentially unchanged there (2242 against 2243 registered pairs). Its single test run raised the ceiling by 58 of 12\,035 pairs and the released count by 2, so the reported pipeline does not use it (see below and \cref{S-tab:s-fill}). No other test result under this protocol informed a design choice.
+
+\paragraph{Partly under the protocol.} The optional learned assay chose its features, regularization and weights on the training cohort only, but its 26 candidate features were listed before the protocol was in place: 13 come from an earlier learned readout that had been evaluated on test data, and 13 were added after that evaluation. We report the learned assay separately from the training-free results.
+
+\paragraph{Comparisons added later.} The comparison of the site capacity with other diversity rules (\main{\cref*{sec:crowding}}; \cref{S-sec:s-crowding}) and that of the release rule with other combinations of its two channels (\main{\cref*{sec:verification}}; \cref{S-sec:s-verification}) were added after the main evaluation; each was pre-registered before it was run, and neither changes the reported pipeline.
+
+\paragraph{Statistics and conventions.} Paired differences use McNemar's test~\cite{mcnemar1947}; tests over several cells, such as the conditions of a synthetic grid or the rules of one comparison, use Holm's correction. A paired count $+a/{-}b$ gives the pairs (or cells) registered by the first method and not by the second ($a$), and the reverse ($b$). In the comparison of release rules a cell is one pair with the refined pool of one frontend; the cells of one pair share its scans and correspondences, so $p$ is from a sign test over pairs. Refined-pool coverage, also called the ceiling, counts pairs with at least one correct refined pose. It depends on generation and finishing and bounds release on a fixed pool. 3DLoMatch contains only eight test scenes, so absolute recall has substantial scene-level uncertainty; \main{\cref*{sec:product}} gives scene-bootstrap intervals for the paired gains, and \cref{S-sec:s-results} also for recall.
+
+\paragraph{Filling the unused ICP slots.} With \ls{}, the finishing step uses on average 12.6 of its 32 ICP slots over the nine test cohorts. A pre-registered extension fills unused slots from the remaining shortlist, then from further non-dominated layers. It retains every original refinement, so coverage cannot decrease. On the training cohort it raised the ceiling from 2487 to 2524 pairs ($+37/{-}0$), passing its pre-registered margin, and left the finishing step's own choice essentially unchanged (2242 against 2243 registered pairs). \Cref{S-tab:s-fill} gives its single run on the nine test cohorts: the ceiling rises by 31--70 pairs for every frontend, but the released count changes by 0 to 16 pairs. The reported pipeline therefore does not use it.
+
+\begin{table}[t]
+\caption{Registered pairs over the nine test cohorts (12\,035 pairs) before and after filling the unused ICP slots, in its single test run. Ceiling: a correct pose among the refined candidates. + finishing: the finishing step's own choice; + release: the release assay; + learned release: the optional learned assay. MAC was not run.}
+\label{S-tab:s-fill}
+\centering\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Frontend & Ceiling & + finishing & + release & \begin{tabular}[b]{@{}r@{}}+ learned\\release\end{tabular} \\
+\midrule
+\ls{} & $10292{\to}10350$ & $9752{\to}9754$ & $9920{\to}9922$ & $10084{\to}10095$ \\
+\ngr{} & $10158{\to}10216$ & $9724{\to}9719$ & $9857{\to}9857$ & $9969{\to}9978$ \\
+SC$^2$-PCR & $10377{\to}10447$ & $9759{\to}9763$ & $9948{\to}9953$ & $10117{\to}10135$ \\
+TurboReg & $10207{\to}10238$ & $9748{\to}9754$ & $9886{\to}9895$ & $10024{\to}10046$ \\
+RANSAC-1M & $10074{\to}10113$ & $9613{\to}9621$ & $9771{\to}9787$ & $9887{\to}9911$ \\
+\bottomrule
+\end{tabular}
+
+\end{table}

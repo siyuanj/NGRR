@@ -1,0 +1,6 @@
+\subsection{Nucleus crowding and capacity control}
+\label{sec:crowding}
+
+NGR's first 256 candidates contain 69.5 distinct poses, versus 164.7 to 214.6 for the baselines (\supp{\cref*{S-fig:s-crowding}}a). Capacity raises rank-1024 coverage from 2528 to 2639 pairs and the refined-pool ceiling from 2429 to 2487 (+71/$-$13), at 1.13$\times$ the time. Doubling nuclei adds 18 covered pairs at 1.64$\times$ (\supp{\cref*{S-fig:s-crowding}}c). Across nine cohorts, capacity adds 134 covered pairs and 63 training-free registrations.
+
+The same-budget comparison in \cref{tab:units}b isolates the capacity rule; full diversity and timing measures are in Supp.~Tab.~\ref*{S-tab:s-diversity}. Soft capacity and MMR tie on refined coverage and final registrations, both exceeding hard capacity and pose suppression. This supports soft penalties on repeated use of matches. In a decoy test with ten true matches and a 40-match false rigid cluster, capacity raises correct-pose coverage from 0/100 to 100/100. Consensus-only selection still chooses the wrong motion.
