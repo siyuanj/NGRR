@@ -3,7 +3,7 @@
 Chengrui Xu†, Siyuan Jiang†, Xiaonan Wang\*
 Tsinghua University · †Equal contribution · \*Corresponding author
 
-[Project page](https://siyuanj.github.io/NGRR/) · [Paper (PDF)](docs/static/ngrr.pdf) · arXiv (coming soon)
+[Project page](https://siyuanj.github.io/NGRR/) · [Paper (PDF)](docs/static/ngrr.pdf) · [Supplementary material (PDF)](docs/static/ngrr_supplementary.pdf) · arXiv (coming soon)
 
 ![NGRR overview](docs/static/images/fig_dataflow.png)
 
@@ -30,6 +30,7 @@ recall at a median of 0.39 s per pair on CPU.
 | `tests/` | Self-contained tests; inputs are generated locally |
 | `docs/method.md` | Equations, numerical conventions and coordinate scaling |
 | `docs/` | Project page (GitHub Pages) |
+| `docs/static/ngrr_supplementary.pdf` | Supplementary material as a separate PDF: method details with pseudocode and all settings, protocol, synthetic studies, stage diagnostics on all nine cohorts, per-scene results, cost and limitations |
 | `paper/` | LaTeX source of the arXiv version and its build script |
 
 The code is the reference implementation. It does not bundle datasets,
