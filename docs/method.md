@@ -1,9 +1,12 @@
 # Inference method
 
-For tentative correspondences (p_i, q_i), NGR estimates a proper rigid motion
-(R, t). The generator and the surface verifier are separate components; the
-verifier also accepts candidate poses from another generator. Phase weights
-are inference states, with no training required.
+For tentative correspondences (p_i, q_i), the NGRR pipeline estimates a proper
+rigid motion (R, t). Its generator is NGRR-LS, the capacity-aware form of the
+NGR generator; in the paper, NGR denotes the same generator without site
+capacity, which this package does not expose. The generator and the surface
+verifier (finishing and release) are separate components; the verifier also
+accepts candidate poses from another generator. Phase weights are inference
+states, with no training required.
 
 ## Compatibility and motif budgets
 
@@ -97,10 +100,12 @@ refinement is invalid.
 
 ## Geometric evidence
 
-The observed source is deterministically divided into fitting and query
-points. ICP uses the fitting points and the complete observed target.
-Surface evidence uses the disjoint source queries and sampled target queries,
-with at most 4096 queries in either direction.
+Each prepared surface is permuted once with a fixed seed (3107). ICP uses the
+first min(4096, floor(n/2)) points of the permuted source, where n is the
+number of retained source points, and the complete observed target. Surface
+evidence uses up to 4096 queries from the second half of each permuted
+surface, so the source queries are disjoint from the fitting points.
+Nearest neighbors are searched in the complete surfaces.
 
 Truncated correspondence support uses radius 0.1. The harmonic mean of
 forward and reverse truncated nearest-neighbor support gives G. To obtain

@@ -194,7 +194,7 @@ class Evidence:
         if information:
             sw, tw = (self.sw[:128]/self.sw[:128].sum(), self.tw[:128]/self.tw[:128].sum()) if early else (self.sw, self.tw)
         scores = []
-        # Bound memory without truncating any pose. NGR's entire <=2048 pool
+        # Bound memory without truncating any pose. The generator's entire <=2048 pool
         # remains a single matrix; larger pose pools are evaluated in blocks.
         for offset in range(0, len(R), 8192):
             r, translation = R[offset:offset+8192], t[offset:offset+8192]

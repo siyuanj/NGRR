@@ -26,7 +26,7 @@ recall at a median of 0.39 s per pair on CPU.
 
 | Path | Contents |
 |---|---|
-| `ngr/` | CPU reference implementation: generator, surface finishing and release |
+| `ngr/` | CPU reference implementation (import name `ngr`): the NGRR-LS generator, surface finishing and release. NGR, the generator without site capacity, is an ablation in the paper and is not exposed |
 | `tests/` | Self-contained tests; inputs are generated locally |
 | `docs/method.md` | Equations, numerical conventions and coordinate scaling |
 | `docs/` | Project page (GitHub Pages) |

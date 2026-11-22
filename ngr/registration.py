@@ -69,10 +69,12 @@ def _candidates(p, q, radius):
 
 
 def register_correspondences(p, q, *, inlier_radius=.04):
-    """Estimate q = p @ R.T + t with capacity-aware motif generation.
+    """Estimate q = p @ R.T + t with the NGRR-LS generator (native output).
 
     Correspondences and inlier_radius use the same physical unit. Return R
     with shape (3, 3) and t with shape (3,), mapping source into target.
+    Raise ValueError if no nondegenerate nucleus exists, for example with
+    exactly three mutually consistent matches.
     """
     p, q = _matches(p, q)
     radius = _radius(inlier_radius)
@@ -138,7 +140,7 @@ def refine_candidates(p, q, source_surface, target_surface,
 
 def register_with_surfaces(p, q, source_surface, target_surface, *,
                            inlier_radius=.1, budget=32):
-    """Run motif generation, retained growth, surface finishing and release.
+    """Run the complete NGRR pipeline: NGRR-LS generation, finishing and release.
 
     Surfaces and correspondences use the same physical unit. At most budget
     candidates are refined. Each surface retains its first observation in

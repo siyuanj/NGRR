@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ngr-registration"
-version = "0.2.0"
-description = "Capacity-aware rigid registration with reusable surface verification"
+version = "0.2.1"
+description = "NGRR reference implementation: capacity-aware rigid registration with reusable surface verification"
 readme = "README.md"
 authors = [{name = "Chengrui Xu"}]
 requires-python = ">=3.11,<3.12"
